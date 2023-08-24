@@ -10,6 +10,12 @@
       "StackName": "amplify-myeventplanner-dev-134246",
       "StackId": "arn:aws:cloudformation:eu-west-1:284474675936:stack/amplify-myeventplanner-dev-134246/59496ac0-4273-11ee-a3a2-0a30b52b24ef",
       "AmplifyAppId": "d1vpyl1r2sjex1"
+    },
+    "categories": {
+      "auth": {
+        "myeventplannerAuth": {},
+        "userPoolGroups": {}
+      }
     }
   }
 }
