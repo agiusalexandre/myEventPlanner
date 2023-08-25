@@ -25,6 +25,9 @@
   </template>
   
   <script>
+  import { updateEvent } from "../graphql/mutations";
+  import { API, Auth } from "aws-amplify";
+
   export default {
     props: {
       event: {
@@ -60,6 +63,29 @@
         return formattedDate;
       },
     },
+    methods: {
+      async bookTicket(){
+        try {
+          const userInfo = await Auth.currentAuthenticatedUser();
+          var signedin_student_id = userInfo.attributes.sub;            
+          await API.graphql({
+            query: updateEvent,
+            variables: {
+              input: {
+                id: this.event.id,
+                total_tickets: this.event.total_tickets - 1 ,
+                tickets: [{ student_id: signedin_student_id }],
+              },
+            },
+          });
+          
+        } catch (err) {
+          console.log("Error: ", err);
+        }
+
+      }
+    }
+    
   };
   </script>
   

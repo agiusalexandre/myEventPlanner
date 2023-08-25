@@ -18,8 +18,7 @@ type Ticket {
   student_id: String!
 }
 
-type Event @model                       
-           @auth(rules: [{allow: private, operations: [create, read]}, {allow: groups, groups: ["admins"], operations: [read, create, update, delete]}, {allow: owner}]) {
+type Event @model @auth(rules: [{allow: private, operations: [create, read]}, {allow: groups, groups: ["admins"], operations: [read, create, update, delete]}, {allow: owner}]) {
   id: ID! 
   name: String! 
   description: String

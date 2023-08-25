@@ -225,7 +225,7 @@ const emits = defineEmits(["close-dialog"])
         try {
           const userInfo = await Auth.currentAuthenticatedUser();
           var signedin_student_id = userInfo.attributes.sub;            
-          const response = await API.graphql({
+          await API.graphql({
             query: createEvent,
             variables: {
               input: {
@@ -254,12 +254,12 @@ const emits = defineEmits(["close-dialog"])
   
     mounted() {
       // Populate the times
-      this.timesArray = [ "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM" ];
+      this.timesArray = [ "08:00 AM","09:00 AM","10:00 AM","11:00 AM","12:00 AM","1:00 PM","2:00 PM","3:00 PM","4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM" ];
       // Populate the date fields
       const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
       var currentDate = new Date();
       var endDate = new Date();
-      endDate.setDate(currentDate.getDate() + 7);
+      endDate.setDate(currentDate.getDate() + 10);
       while (currentDate <= endDate) {
         this.datesArray.push(new Date(currentDate));
         this.datesLocalisedArray.push(currentDate.toLocaleDateString(undefined, options));
